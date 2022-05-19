@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.eneszeydan.airtiesgradproject.R
 
 
-class PastFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -16,7 +16,7 @@ class PastFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_past, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
 }
