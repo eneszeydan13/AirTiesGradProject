@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "488778285463",
+    "project_id": "airtiesgradproject",
+    "storage_bucket": "airtiesgradproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488778285463:android:d3e908e5125abcf48144d2",
+        "android_client_info": {
+          "package_name": "com.eneszeydan.airtiesgradproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488778285463-qq1dcv3ujmhlifjc52ssgjfm7bfvt7gj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-heJE0Vfrz7ho2SCAEFv8nZi_GOXEubw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488778285463-qq1dcv3ujmhlifjc52ssgjfm7bfvt7gj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,20 +9,50 @@
         android:id="@+id/homepageFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.HomepageFragment"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" />
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.eneszeydan.airtiesgradproject.fragments.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_homepage" >
+        <action
+            android:id="@+id/toAddNew"
+            app:destination="@id/addNewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.HistoryFragment"
         android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/toAddNew"
+            app:destination="@id/addNewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/toAddNew"
+            app:destination="@id/addNewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.eneszeydan.airtiesgradproject.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.eneszeydan.airtiesgradproject.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/toAddNew"
+            app:destination="@id/addNewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewFragment"
+        android:name="com.eneszeydan.airtiesgradproject.fragments.AddNewFragment"
+        android:label="fragment_add_new"
+        tools:layout="@layout/fragment_add_new" >
+        <action
+            android:id="@+id/toDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>
