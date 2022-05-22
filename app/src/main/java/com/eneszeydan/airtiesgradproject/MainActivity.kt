@@ -2,6 +2,7 @@ package com.eneszeydan.airtiesgradproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
@@ -15,6 +16,7 @@ import com.eneszeydan.airtiesgradproject.databinding.ActivityMainBinding
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
+    val name = "Enes"
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +27,13 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navHostFragment.navController)
 
+
+
         binding.fab.setOnClickListener {
             try {
                 Navigation.findNavController(this, R.id.fragmentContainerView).navigate(R.id.toAddNew)
             }catch (e: Exception){
-                
+                Log.e(e.cause.toString(), e.localizedMessage)
             }
         }
 

@@ -36,7 +36,11 @@
         android:id="@+id/detailFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="food"
+            app:argType="com.eneszeydan.airtiesgradproject.entity.Food" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.SearchFragment"
