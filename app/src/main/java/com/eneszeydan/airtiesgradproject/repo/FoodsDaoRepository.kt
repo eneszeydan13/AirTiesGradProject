@@ -48,9 +48,11 @@ class FoodsDaoRepository {
                   foodPrice:String,
                   orderQuantity: String,
                   userName: String){
+        val sumQuantity = 0
+        val orders = orderList.value
         fdao.addToCart(foodName, foodImage, foodPrice, orderQuantity, userName).enqueue(object : Callback<CRUDResponse>{
             override fun onResponse(call: Call<CRUDResponse>, response: Response<CRUDResponse>) {
-                response.body()?.let { Log.d("Adding to cart of $userName", it.message) }
+
             }
 
             override fun onFailure(call: Call<CRUDResponse>, t: Throwable) {}

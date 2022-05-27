@@ -3,7 +3,10 @@ package com.eneszeydan.airtiesgradproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation
@@ -13,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.eneszeydan.airtiesgradproject.databinding.ActivityMainBinding
+import com.eneszeydan.airtiesgradproject.fragments.HomepageFragment
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -37,8 +41,19 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        navHostFragment.navController.addOnDestinationChangedListener{_, destination, _ ->
+            if(destination.id == R.id.addNewFragment || destination.id == R.id.detailFragment){
+                binding.bottomNavigationView.visibility = View.GONE
+                binding.fab.visibility = View.GONE
+            }else{
+                binding.bottomNavigationView.visibility = View.VISIBLE
+                binding.fab.visibility = View.VISIBLE
+            }
 
+        }
 
 
     }
+
+
 }

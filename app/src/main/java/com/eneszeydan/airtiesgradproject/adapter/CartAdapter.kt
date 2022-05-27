@@ -10,6 +10,7 @@ import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.databinding.CartRowBinding
 import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.viewmodels.HomepageViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class CartAdapter(var cartList:List<FoodCart>, var viewModel:HomepageViewModel): RecyclerView.Adapter<CartViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -26,7 +27,10 @@ class CartAdapter(var cartList:List<FoodCart>, var viewModel:HomepageViewModel):
             cartObject = cart
 
             deleteImage.setOnClickListener {
-                viewModel.deleteFromCart(cart.cartId, cart.userName)
+                Snackbar.make(it, "Silmek istediğinize emin misiniz?", Snackbar.LENGTH_LONG)
+                    .setAction("EVET") {
+                        viewModel.deleteFromCart(cart.cartId, cart.userName)
+                    }.show()
             }
 
             Glide.with(cartFoodImage).load(imageUrl).apply(options).into(cartFoodImage)
