@@ -28,6 +28,11 @@ class LogInActivity : AppCompatActivity() {
                     loginClicked(email, password)
                 }
             }
+
+            noAccountTextView.setOnClickListener{
+                val intent = Intent(this@LogInActivity, SignUpActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }
