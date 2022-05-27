@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.eneszeydan.airtiesgradproject.MainActivity
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.databinding.FragmentDetailBinding
+import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.viewmodels.DetailViewModel
 
 
@@ -25,7 +26,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewModel: DetailViewModel
-
+    private lateinit var orders : List<FoodCart>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,10 +40,14 @@ class DetailFragment : Fragment() {
         val food = bundle.food
         loadImage(food.foodImageName)
         binding.foodObject = food
-        binding.userName = (activity as MainActivity).name
+        val name = (activity as MainActivity).name
+        binding.userName = name
 
 
-
+        viewModel.getCart(name)
+        viewModel.orders.observe(viewLifecycleOwner) {
+            orders = it
+        }
 
         return binding.root
     }
@@ -88,14 +93,20 @@ class DetailFragment : Fragment() {
         orderQuantity: String,
         userName: String
     ) {
-        Log.i("Username", userName)
-        viewModel.addToCart(foodName, foodImage, foodPrice, orderQuantity, userName)
+
+        var sum = 0
+        for (o in orders){
+            if(o.foodName == foodName){
+                sum = Integer.parseInt(o.orderQuantity) + Integer.parseInt(orderQuantity)
+                viewModel.deleteFromCart(o.cartId, o.userName)
+                break
+            }
+        }
+
+        viewModel.addToCart(foodName, foodImage, foodPrice, sum.toString(), userName)
         if(orderQuantity.isNotEmpty()){
             Toast.makeText(requireContext(),"$foodName sepete eklendi",Toast.LENGTH_SHORT).show()
         }else Toast.makeText(requireContext(),"Sipariş adeti 0 olamaz.",Toast.LENGTH_SHORT).show()
 
     }
-
-
-
 }

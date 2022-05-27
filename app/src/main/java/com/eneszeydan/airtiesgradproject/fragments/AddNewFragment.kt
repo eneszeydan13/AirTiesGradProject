@@ -26,9 +26,6 @@ class AddNewFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_new, container, false)
 
         viewModel.foods.observe(viewLifecycleOwner) {
-            for (i in it){
-                Log.e("Food", i.foodName)
-            }
             adapter = FoodsAdapter(it)
             binding.adapter = adapter
         }

@@ -48,8 +48,10 @@ class FoodsDaoRepository {
                   foodPrice:String,
                   orderQuantity: String,
                   userName: String){
-        val sumQuantity = 0
         val orders = orderList.value
+
+            Log.e("Orders", orders.toString())
+
         fdao.addToCart(foodName, foodImage, foodPrice, orderQuantity, userName).enqueue(object : Callback<CRUDResponse>{
             override fun onResponse(call: Call<CRUDResponse>, response: Response<CRUDResponse>) {
 
@@ -73,7 +75,8 @@ class FoodsDaoRepository {
             }
 
             override fun onFailure(call: Call<FoodCartResponse>, t: Throwable) {
-                Log.w("Error", t.localizedMessage)
+                Log.w("Getting Cart", t.localizedMessage)
+                orderList.value = emptyList()
             }
 
         })
@@ -86,7 +89,7 @@ class FoodsDaoRepository {
             }
 
             override fun onFailure(call: Call<CRUDResponse>, t: Throwable) {
-                Log.w("Error", t.localizedMessage)
+                Log.w("Deletion", t.message.toString())
             }
 
         })
