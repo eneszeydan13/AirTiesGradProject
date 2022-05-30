@@ -22,7 +22,6 @@ class AddNewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_new, container, false)
 
         viewModel.foods.observe(viewLifecycleOwner) {
@@ -39,5 +38,4 @@ class AddNewFragment : Fragment() {
         val tempViewModel : AddNewViewModel by viewModels()
         viewModel = tempViewModel
     }
-
 }
