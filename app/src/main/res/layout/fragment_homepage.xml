@@ -10,6 +10,9 @@
         <variable
             name="cartAdapter"
             type="com.eneszeydan.airtiesgradproject.adapter.CartAdapter" />
+        <variable
+            name="homepageFragment"
+            type="com.eneszeydan.airtiesgradproject.fragments.HomepageFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +21,7 @@
         tools:context=".fragments.HomepageFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="64dp"
@@ -27,5 +31,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/confirm_order"
+            android:onClick="@{()-> homepageFragment.fabClicked()}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

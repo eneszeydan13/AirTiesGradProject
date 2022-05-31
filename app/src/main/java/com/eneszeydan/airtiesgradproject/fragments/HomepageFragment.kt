@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.eneszeydan.airtiesgradproject.MainActivity
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.CartAdapter
@@ -27,6 +28,7 @@ class HomepageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homepage, container, false)
+        binding.homepageFragment = this
 
         val uid:String = Firebase.auth.uid.toString()
 
@@ -45,6 +47,10 @@ class HomepageFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val tempViewModel : HomepageViewModel by viewModels()
         viewModel = tempViewModel
+    }
+
+    fun fabClicked(){
+        Navigation.findNavController(binding.extFab).navigate(R.id.toConfirm)
     }
 
 }

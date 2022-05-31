@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         navHostFragment.navController.addOnDestinationChangedListener{_, destination, _ ->
-            if(destination.id == R.id.addNewFragment || destination.id == R.id.detailFragment){
+            if(destination.id == R.id.addNewFragment || destination.id == R.id.detailFragment || destination.id == R.id.confirmOrderFragment){
                 binding.bottomNavigationView.visibility = View.GONE
                 binding.fab.visibility = View.GONE
             }else{
