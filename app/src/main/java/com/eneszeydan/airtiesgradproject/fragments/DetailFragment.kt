@@ -1,25 +1,23 @@
 package com.eneszeydan.airtiesgradproject.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.eneszeydan.airtiesgradproject.MainActivity
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.databinding.FragmentDetailBinding
 import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.viewmodels.DetailViewModel
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class DetailFragment : Fragment() {
@@ -40,11 +38,12 @@ class DetailFragment : Fragment() {
         val food = bundle.food
         loadImage(food.foodImageName)
         binding.foodObject = food
-        val name = (activity as MainActivity).name
-        binding.userName = name
+
+        val uid: String = Firebase.auth.uid.toString()
+        binding.userName = uid
 
 
-        viewModel.getCart(name)
+        viewModel.getCart(uid)
         viewModel.orders.observe(viewLifecycleOwner) {
             orders = it
         }
@@ -94,7 +93,7 @@ class DetailFragment : Fragment() {
         userName: String
     ) {
 
-        var sum = 0
+        var sum = orderQuantity.toInt()
         for (o in orders){
             if(o.foodName == foodName){
                 sum = Integer.parseInt(o.orderQuantity) + Integer.parseInt(orderQuantity)

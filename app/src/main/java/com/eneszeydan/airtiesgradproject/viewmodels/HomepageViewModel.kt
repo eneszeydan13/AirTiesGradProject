@@ -10,6 +10,7 @@ class HomepageViewModel: ViewModel() {
 
     var orders = MutableLiveData<List<FoodCart>>()
     val frepo = FoodsDaoRepository()
+    var name = MutableLiveData<String>()
 
     init {
         orders = frepo.getOrders()
@@ -23,6 +24,8 @@ class HomepageViewModel: ViewModel() {
         frepo.deleteFromCart(cartId, username)
     }
 
-
+    fun getUsername(uid:String){
+        name = frepo.getUsername(uid)
+    }
 
 }

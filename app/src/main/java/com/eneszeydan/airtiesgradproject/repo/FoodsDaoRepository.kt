@@ -5,19 +5,22 @@ import androidx.lifecycle.MutableLiveData
 import com.eneszeydan.airtiesgradproject.entity.*
 import com.eneszeydan.airtiesgradproject.retrofit.ApiUtils
 import com.eneszeydan.airtiesgradproject.retrofit.FoodsDaoInterface
+import com.google.firebase.database.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FoodsDaoRepository {
-
+    private lateinit var ref: DatabaseReference
     var foodsList: MutableLiveData<List<Food>>
     var orderList: MutableLiveData<List<FoodCart>>
+    var name:MutableLiveData<String>
     var fdao : FoodsDaoInterface
 
     init {
         foodsList = MutableLiveData()
         orderList = MutableLiveData()
+        name = MutableLiveData()
         fdao = ApiUtils.getFoodsInterface()
     }
 
@@ -93,6 +96,31 @@ class FoodsDaoRepository {
             }
 
         })
+    }
+
+    fun getUsername(uid: String): MutableLiveData<String> {
+
+        val db = FirebaseDatabase.getInstance()
+        ref = db.getReference("users/${uid}")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val nameList = ArrayList<User>()
+                for (d in snapshot.children){
+                    val user = d.getValue(User::class.java)
+
+                    if (user != null){
+                        user.name = d.child("name").value.toString()
+                        nameList.add(user)
+                    }
+                }
+                name.value = nameList[0].name
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+
+        })
+        name.value?.let { Log.i("Name", it) }
+        return name
     }
 
 }

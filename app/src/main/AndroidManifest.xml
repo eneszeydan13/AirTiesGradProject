@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AirTiesGradProject"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
+
         <activity
             android:name=".LogInActivity"
             android:exported="true">
@@ -24,15 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".MainActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

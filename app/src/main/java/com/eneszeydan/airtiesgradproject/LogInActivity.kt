@@ -3,12 +3,18 @@ package com.eneszeydan.airtiesgradproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.eneszeydan.airtiesgradproject.databinding.ActivityLogInBinding
+import com.eneszeydan.airtiesgradproject.viewmodels.LogInViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LogInActivity : AppCompatActivity() {
 
@@ -40,6 +46,9 @@ class LogInActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
+        if (currentUser != null) {
+            Log.e("Userrr", currentUser.uid)
+        }
         if (currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

@@ -17,6 +17,8 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.eneszeydan.airtiesgradproject.databinding.ActivityMainBinding
 import com.eneszeydan.airtiesgradproject.fragments.HomepageFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
