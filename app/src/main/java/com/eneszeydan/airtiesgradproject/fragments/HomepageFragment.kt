@@ -16,6 +16,7 @@ import com.eneszeydan.airtiesgradproject.databinding.FragmentHomepageBinding
 import com.eneszeydan.airtiesgradproject.viewmodels.HomepageViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.combineTransform
 
 class HomepageFragment : Fragment() {
 
@@ -29,7 +30,7 @@ class HomepageFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homepage, container, false)
         binding.homepageFragment = this
-
+        binding.cartEmptyAnimation.visibility = View.GONE
         val uid:String = Firebase.auth.uid.toString()
 
         viewModel.getCart(uid)
@@ -37,7 +38,15 @@ class HomepageFragment : Fragment() {
         viewModel.orders.observe(viewLifecycleOwner) {
             adapter = CartAdapter(it, viewModel)
             binding.cartAdapter = adapter
-
+            if(it.isEmpty()){
+                binding.extFab.visibility = View.GONE
+                binding.cartEmptyAnimation.visibility = View.VISIBLE
+                binding.cartEmptyTextView.visibility = View.VISIBLE
+            }else{
+                binding.extFab.visibility = View.VISIBLE
+                binding.cartEmptyAnimation.visibility = View.GONE
+                binding.cartEmptyTextView.visibility = View.GONE
+            }
         }
 
         return binding.root
