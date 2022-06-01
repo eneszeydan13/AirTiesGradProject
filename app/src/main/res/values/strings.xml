@@ -7,4 +7,5 @@
     <string name="confirm_order">Siparişi Onayla</string>
     <string name="price_tag">Fiyat: %s ₺</string>
     <string name="cart_empty">Sepetiniz boş.</string>
+    <string name="query_hint">Yemek arayın…</string>
 </resources>
