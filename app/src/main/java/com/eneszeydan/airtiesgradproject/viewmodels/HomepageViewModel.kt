@@ -24,8 +24,6 @@ class HomepageViewModel: ViewModel() {
         frepo.deleteFromCart(cartId, username)
     }
 
-    fun getUsername(uid:String){
-        name = frepo.getUsername(uid)
-    }
+
 
 }

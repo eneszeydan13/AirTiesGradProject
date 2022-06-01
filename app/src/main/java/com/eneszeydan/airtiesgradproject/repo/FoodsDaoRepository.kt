@@ -98,29 +98,16 @@ class FoodsDaoRepository {
         })
     }
 
-    fun getUsername(uid: String): MutableLiveData<String> {
+    fun searchFood(query:String): ArrayList<Food>{
+        val filteredList = ArrayList<Food>()
 
-        val db = FirebaseDatabase.getInstance()
-        ref = db.getReference("users/${uid}")
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val nameList = ArrayList<User>()
-                for (d in snapshot.children){
-                    val user = d.getValue(User::class.java)
-
-                    if (user != null){
-                        user.name = d.child("name").value.toString()
-                        nameList.add(user)
-                    }
+        foodsList.value?.let{
+            for (f in it){
+                if (f.foodName.contains(query, true)){
+                    filteredList.add(f)
                 }
-                name.value = nameList[0].name
             }
-
-            override fun onCancelled(error: DatabaseError) {}
-
-        })
-        name.value?.let { Log.i("Name", it) }
-        return name
+        }
+        return filteredList
     }
-
 }

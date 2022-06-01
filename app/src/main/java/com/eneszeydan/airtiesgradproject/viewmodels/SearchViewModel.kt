@@ -19,4 +19,8 @@ class SearchViewModel : ViewModel() {
     fun loadFoods(){
         frepo.getAllFoods()
     }
+
+    fun searchFood(query: String){
+        foods.value = frepo.searchFood(query)
+    }
 }
