@@ -20,7 +20,7 @@ class SearchViewModel : ViewModel() {
         frepo.getAllFoods()
     }
 
-    fun searchFood(query: String){
-        foods.value = frepo.searchFood(query)
+    fun searchFood(query: String): ArrayList<Food> {
+        return frepo.searchFood(query)
     }
 }

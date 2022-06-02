@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.FoodsAdapter
 import com.eneszeydan.airtiesgradproject.databinding.FragmentSearchBinding
+import com.eneszeydan.airtiesgradproject.entity.Food
 import com.eneszeydan.airtiesgradproject.viewmodels.SearchViewModel
 
 
@@ -33,16 +34,17 @@ class SearchFragment : Fragment() {
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (query.isNotEmpty()) {
-                    viewModel.searchFood(query)
-                }
+
                 return true
             }
 
             override fun onQueryTextChange(query: String): Boolean {
 
                 if (query.isNotEmpty()) {
-                    viewModel.searchFood(query)
+                    adapter.foodsList = viewModel.searchFood(query)
+                    adapter.notifyDataSetChanged()
+                }else{
+                    viewModel.loadFoods()
                 }
                 return true
             }

@@ -14,7 +14,6 @@ import com.eneszeydan.airtiesgradproject.fragments.AddNewFragmentDirections
 
 class FoodsAdapter(var foodsList: List<Food>) : RecyclerView.Adapter<FoodsViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: FoodItemCardBinding =

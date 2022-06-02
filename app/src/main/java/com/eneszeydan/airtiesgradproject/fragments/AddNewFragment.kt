@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.FoodsAdapter
 import com.eneszeydan.airtiesgradproject.databinding.FragmentAddNewBinding
+import com.eneszeydan.airtiesgradproject.entity.Food
 import com.eneszeydan.airtiesgradproject.viewmodels.AddNewViewModel
 
 class AddNewFragment : Fragment() {
