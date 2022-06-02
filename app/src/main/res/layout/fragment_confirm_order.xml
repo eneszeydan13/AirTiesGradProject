@@ -7,6 +7,9 @@
         <variable
             name="amount"
             type="Integer" />
+        <variable
+            name="confirmOrderFragment"
+            type="com.eneszeydan.airtiesgradproject.fragments.ConfirmOrderFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,7 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="64dp"
-            android:text="Siparişi Onayla"
+            android:text="@string/save_order"
+            android:onClick="@{() -> confirmOrderFragment.saveOrder()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

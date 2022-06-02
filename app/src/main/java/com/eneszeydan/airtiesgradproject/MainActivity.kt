@@ -22,7 +22,6 @@ import com.google.firebase.ktx.Firebase
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
-    val name = "Enes"
     private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             try {
                 Navigation.findNavController(this, R.id.fragmentContainerView).navigate(R.id.toAddNew)
             }catch (e: Exception){
-                Log.e(e.cause.toString(), e.localizedMessage)
+                Log.e(e.cause.toString(), e.localizedMessage as String)
             }
         }
 

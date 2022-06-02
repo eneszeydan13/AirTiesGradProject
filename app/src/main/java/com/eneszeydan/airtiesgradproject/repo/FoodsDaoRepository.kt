@@ -14,13 +14,13 @@ class FoodsDaoRepository {
     private lateinit var ref: DatabaseReference
     var foodsList: MutableLiveData<List<Food>>
     var orderList: MutableLiveData<List<FoodCart>>
-    var name:MutableLiveData<String>
+    var pastOrders: MutableLiveData<List<Order>>
     var fdao : FoodsDaoInterface
 
     init {
         foodsList = MutableLiveData()
         orderList = MutableLiveData()
-        name = MutableLiveData()
+        pastOrders = MutableLiveData()
         fdao = ApiUtils.getFoodsInterface()
     }
 
@@ -40,7 +40,7 @@ class FoodsDaoRepository {
             }
 
             override fun onFailure(call: Call<FoodResponse>, t: Throwable) {
-                Log.e("Getting foods", t.localizedMessage)
+                Log.e("Getting foods", t.localizedMessage as String)
             }
 
         })
@@ -78,7 +78,7 @@ class FoodsDaoRepository {
             }
 
             override fun onFailure(call: Call<FoodCartResponse>, t: Throwable) {
-                Log.w("Getting Cart", t.localizedMessage)
+                Log.w("Getting Cart", t.localizedMessage as String)
                 orderList.value = emptyList()
             }
 
@@ -109,5 +109,38 @@ class FoodsDaoRepository {
             }
         }
         return filteredList
+    }
+
+    fun saveOrderToFirebase(order: Order){
+        val db = FirebaseDatabase.getInstance()
+        ref = db.getReference("pastOrders/${order.username}")
+        ref.push().setValue(order)
+    }
+
+    fun loadPastOrders(): MutableLiveData<List<Order>>{
+        return pastOrders
+    }
+
+    fun getPastOrders(userName: String){
+        val db = FirebaseDatabase.getInstance()
+        ref = db.getReference("pastOrders/${userName}")
+        ref.addValueEventListener(object :ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = ArrayList<Order>()
+                for (d in snapshot.children){
+                    val order = d.getValue(Order::class.java)
+                    if (order != null){
+                        list.add(order)
+                    }
+                }
+                pastOrders.value = list
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("Past Orders", error.message)
+            }
+
+        })
     }
 }

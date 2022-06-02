@@ -13,6 +13,7 @@ import com.eneszeydan.airtiesgradproject.MainActivity
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.CartAdapter
 import com.eneszeydan.airtiesgradproject.databinding.FragmentHomepageBinding
+import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.viewmodels.HomepageViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -46,6 +47,7 @@ class HomepageFragment : Fragment() {
                 binding.extFab.visibility = View.VISIBLE
                 binding.cartEmptyAnimation.visibility = View.GONE
                 binding.cartEmptyTextView.visibility = View.GONE
+                calculatePrice(it)
             }
         }
 
@@ -59,7 +61,16 @@ class HomepageFragment : Fragment() {
     }
 
     fun fabClicked(){
-        Navigation.findNavController(binding.extFab).navigate(R.id.toConfirm)
+            val nav = HomepageFragmentDirections.toConfirm(binding.orderPrice as Int)
+            Navigation.findNavController(binding.extFab).navigate(nav)
+    }
+
+    private fun calculatePrice(orderList: List<FoodCart>){
+        var sum = 0
+        for (c in orderList){
+            sum+=c.foodPrice.toInt() * c.orderQuantity.toInt()
+        }
+        binding.orderPrice = sum
     }
 
 }

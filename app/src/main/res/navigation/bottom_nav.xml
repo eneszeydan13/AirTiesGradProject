@@ -52,6 +52,9 @@
         <action
             android:id="@+id/toAddNew"
             app:destination="@id/addNewFragment" />
+        <action
+            android:id="@+id/toDetail"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewFragment"
@@ -65,5 +68,10 @@
     <fragment
         android:id="@+id/confirmOrderFragment"
         android:name="com.eneszeydan.airtiesgradproject.fragments.ConfirmOrderFragment"
-        android:label="ConfirmOrderFragment" />
+        android:label="ConfirmOrderFragment" >
+        <argument
+            android:name="orderAmount"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

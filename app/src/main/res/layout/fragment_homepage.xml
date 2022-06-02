@@ -13,6 +13,9 @@
         <variable
             name="homepageFragment"
             type="com.eneszeydan.airtiesgradproject.fragments.HomepageFragment" />
+        <variable
+            name="orderPrice"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
-            android:text="@string/confirm_order"
+            android:text="@{@string/confirm_order(orderPrice)}"
             android:onClick="@{()-> homepageFragment.fabClicked()}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerView"

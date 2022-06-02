@@ -1,5 +1,6 @@
 package com.eneszeydan.airtiesgradproject.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -11,6 +12,7 @@ import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.databinding.FoodItemCardBinding
 import com.eneszeydan.airtiesgradproject.entity.Food
 import com.eneszeydan.airtiesgradproject.fragments.AddNewFragmentDirections
+import com.eneszeydan.airtiesgradproject.fragments.SearchFragmentDirections
 
 class FoodsAdapter(var foodsList: List<Food>) : RecyclerView.Adapter<FoodsViewHolder>() {
 
@@ -32,8 +34,22 @@ class FoodsAdapter(var foodsList: List<Food>) : RecyclerView.Adapter<FoodsViewHo
             Glide.with(this.root).load(imageUrl).apply(options).into(imageView)
 
             rowCard.setOnClickListener {
-                val nav = AddNewFragmentDirections.toDetail(food)
-                Navigation.findNavController(it).navigate(nav)
+                /**Because this adapter is used by two different fragments
+                 * I decided to use try catch blocks to avoid crashes
+                 * when we navigate from either one
+                 */
+                try {
+                    val nav = AddNewFragmentDirections.toDetail(food)
+                    Navigation.findNavController(it).navigate(nav)
+                } catch (e: Exception) {
+                }
+
+                try {
+                    val nav = SearchFragmentDirections.toDetail(food)
+                    Navigation.findNavController(it).navigate(nav)
+                } catch (e: Exception) {
+                }
+
             }
         }
 
