@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.eneszeydan.airtiesgradproject.entity.*
 import com.eneszeydan.airtiesgradproject.retrofit.ApiUtils
 import com.eneszeydan.airtiesgradproject.retrofit.FoodsDaoInterface
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -142,6 +143,10 @@ class FoodsDaoRepository {
             }
 
         })
+    }
+
+    fun signOut(){
+        FirebaseAuth.getInstance().signOut()
     }
 
 

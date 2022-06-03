@@ -6,7 +6,7 @@ import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 
 class DetailViewModel: ViewModel() {
-    val frepo = FoodsDaoRepository()
+    private val frepo = FoodsDaoRepository()
     var orders = MutableLiveData<List<FoodCart>>()
 
     init{

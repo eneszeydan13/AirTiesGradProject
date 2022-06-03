@@ -8,7 +8,7 @@ import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 class HomepageViewModel: ViewModel() {
 
     var orders = MutableLiveData<List<FoodCart>>()
-    val frepo = FoodsDaoRepository()
+    private val frepo = FoodsDaoRepository()
     var name = MutableLiveData<String>()
 
     init {

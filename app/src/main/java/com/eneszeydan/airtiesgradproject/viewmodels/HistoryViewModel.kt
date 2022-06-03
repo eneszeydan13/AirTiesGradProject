@@ -6,7 +6,7 @@ import com.eneszeydan.airtiesgradproject.entity.Order
 import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 
 class HistoryViewModel : ViewModel() {
-    val frepo = FoodsDaoRepository()
+    private val frepo = FoodsDaoRepository()
     var pastOrders = MutableLiveData<List<Order>>()
 
     init {

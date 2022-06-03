@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">AirTiesGradProject</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="amount">Adet</string>
@@ -9,8 +9,12 @@
     <string name="query_hint">Yemek arayın…</string>
     <string name="save_order">Siparişi Onayla</string>
     <string name="date_and_time">Tarih ve Saat: %s</string>
-    <string name="address">Adres: %s</string>
+    <string name="address" tools:ignore="Typos">Adres: %s</string>
     <string name="price">Tutar: %s ₺</string>
     <string name="black_basket_image">black_basket_image</string>
     <string name="log_out">ÇIKIŞ YAP</string>
+    <string name="sign_out_clicked">Çıkış yapmak istediğinize emin misiniz?</string>
+    <string name="positive">EVET</string>
+    <string name="address_text" tools:ignore="Typos">Adres</string>
+    <string name="tel_no_text">Tel. No</string>
 </resources>

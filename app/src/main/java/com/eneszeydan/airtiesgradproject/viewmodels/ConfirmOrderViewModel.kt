@@ -8,7 +8,7 @@ import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 
 class ConfirmOrderViewModel: ViewModel() {
 
-    val frepo = FoodsDaoRepository()
+    private val frepo = FoodsDaoRepository()
     var orderList = MutableLiveData<List<FoodCart>>()
 
     init {

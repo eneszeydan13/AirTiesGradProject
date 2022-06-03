@@ -7,7 +7,7 @@ import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 
 class SearchViewModel : ViewModel() {
     var foods = MutableLiveData<List<Food>>()
-    val frepo = FoodsDaoRepository()
+    private val frepo = FoodsDaoRepository()
 
 
     init {

@@ -1,5 +1,6 @@
 package com.eneszeydan.airtiesgradproject.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -28,10 +29,11 @@ class ConfirmOrderFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_confirm_order, container, false)
         binding.confirmOrderFragment = this
+        binding.orderConfirmedAnimation.visibility = View.GONE
 
         val bundle: ConfirmOrderFragmentArgs by navArgs()
         binding.amount = bundle.orderAmount
@@ -45,9 +47,11 @@ class ConfirmOrderFragment : Fragment() {
         viewModel = tempViewModel
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun saveOrder(){
         val address = binding.addressEditText.text.toString()
         val telNo = binding.telEditText.text.toString()
+        //Getting the date and time
         val date = Calendar.getInstance().time
         val simpleDateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm")
         val dateTime = simpleDateFormat.format(date).toString()
@@ -70,6 +74,8 @@ class ConfirmOrderFragment : Fragment() {
                         viewModel.deleteFromCart(item.cartId, item.userName)
                     }
                 }
+
+                binding.orderConfirmedAnimation.visibility = View.VISIBLE
                 Handler(Looper.getMainLooper()).postDelayed({
                     Navigation.findNavController(binding.button).navigateUp()
                 }, 2500)

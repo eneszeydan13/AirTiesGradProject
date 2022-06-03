@@ -1,5 +1,6 @@
 package com.eneszeydan.airtiesgradproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             navHostFragment.navController
         )
 
+        supportActionBar?.title = "Food Delivery"
+
         binding.fab.setOnClickListener {
             try {
                 Navigation.findNavController(this, R.id.fragmentContainerView)
@@ -47,5 +50,10 @@ class MainActivity : AppCompatActivity() {
                 binding.fab.visibility = View.VISIBLE
             }
         }
+    }
+
+    fun signOutClicked() {
+        val intent = Intent(this, LogInActivity::class.java)
+        startActivity(intent)
     }
 }
