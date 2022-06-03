@@ -1,17 +1,15 @@
 package com.eneszeydan.airtiesgradproject.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.FoodsAdapter
 import com.eneszeydan.airtiesgradproject.databinding.FragmentAddNewBinding
-import com.eneszeydan.airtiesgradproject.entity.Food
 import com.eneszeydan.airtiesgradproject.viewmodels.AddNewViewModel
 
 class AddNewFragment : Fragment() {

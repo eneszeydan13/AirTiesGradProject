@@ -1,15 +1,13 @@
 package com.eneszeydan.airtiesgradproject.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.eneszeydan.airtiesgradproject.MainActivity
 import com.eneszeydan.airtiesgradproject.R
 import com.eneszeydan.airtiesgradproject.adapter.CartAdapter
 import com.eneszeydan.airtiesgradproject.databinding.FragmentHomepageBinding
@@ -17,7 +15,6 @@ import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.viewmodels.HomepageViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.flow.combineTransform
 
 class HomepageFragment : Fragment() {
 

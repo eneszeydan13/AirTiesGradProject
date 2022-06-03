@@ -2,7 +2,6 @@ package com.eneszeydan.airtiesgradproject.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.eneszeydan.airtiesgradproject.entity.Food
 import com.eneszeydan.airtiesgradproject.entity.FoodCart
 import com.eneszeydan.airtiesgradproject.repo.FoodsDaoRepository
 
