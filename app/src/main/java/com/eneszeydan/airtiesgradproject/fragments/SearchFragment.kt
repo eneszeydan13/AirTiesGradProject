@@ -53,10 +53,9 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
-    /*
-     * I used onPause() because when there's text on SearchView
-     * , if we navigate to another fragment and come back, the app crashes,
-     * so I set the query to empty string
+    /** I used onPause() because when there's text on SearchView
+     *  if we navigate to another fragment and come back, the app crashes,
+     *  so I set the query to empty string
      */
     override fun onPause() {
         super.onPause()

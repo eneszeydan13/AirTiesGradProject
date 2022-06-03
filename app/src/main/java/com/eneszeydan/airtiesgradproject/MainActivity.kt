@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        /* This piece of code is for controlling the visibility of the BottomNavigationView
-        * depending on the fragment that's currently showing on the NavigationHost
+        /** This piece of code is for controlling the visibility of the BottomNavigationView
+         *  depending on the fragment that's currently showing on the NavigationHost
          */
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.addNewFragment || destination.id == R.id.detailFragment || destination.id == R.id.confirmOrderFragment) {

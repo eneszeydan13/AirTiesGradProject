@@ -17,4 +17,8 @@
     <string name="positive">EVET</string>
     <string name="address_text" tools:ignore="Typos">Adres</string>
     <string name="tel_no_text">Tel. No</string>
+    <string name="deletion_confirmation">Silmek istediğinize emin misiniz?</string>
+    <string name="wrong_amount">Sepetteki miktar 0\'dan az olamaz.</string>
+    <string name="added_to_basket">%s sepete eklendi</string>
+    <string name="empty_amount">Sepetteki miktar 0 olamaz.</string>
 </resources>

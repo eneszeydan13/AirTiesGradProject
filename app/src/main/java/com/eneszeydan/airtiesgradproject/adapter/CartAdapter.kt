@@ -27,8 +27,8 @@ class CartAdapter(var cartList:List<FoodCart>, var viewModel:HomepageViewModel):
             cartObject = cart
 
             deleteImage.setOnClickListener {
-                Snackbar.make(it, "Silmek istediğinize emin misiniz?", Snackbar.LENGTH_LONG)
-                    .setAction("EVET") {
+                Snackbar.make(it, R.string.deletion_confirmation, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.positive) {
                         viewModel.deleteFromCart(cart.cartId, cart.userName)
                     }.show()
             }

@@ -75,7 +75,7 @@ class DetailFragment : Fragment() {
 
     fun minusClicked(tv: TextView) {
         if (tv.text.isEmpty()) {
-            Toast.makeText(requireContext(),"Sepetteki miktar 0'dan az olamaz.",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),getString(R.string.wrong_amount),Toast.LENGTH_SHORT).show()
         } else if (tv.text.toString() == "1") {
             tv.text = ""
         } else {
@@ -93,19 +93,22 @@ class DetailFragment : Fragment() {
         userName: String
     ) {
 
-        var sum = orderQuantity.toInt()
-        for (o in orders){
-            if(o.foodName == foodName){
-                sum = Integer.parseInt(o.orderQuantity) + Integer.parseInt(orderQuantity)
-                viewModel.deleteFromCart(o.cartId, o.userName)
-                break
-            }
-        }
 
-        viewModel.addToCart(foodName, foodImage, foodPrice, sum.toString(), userName)
+
+
         if(orderQuantity.isNotEmpty()){
+            var sum = orderQuantity.toInt()
+
+            for (o in orders){
+                if(o.foodName == foodName){
+                    sum = Integer.parseInt(o.orderQuantity) + Integer.parseInt(orderQuantity)
+                    viewModel.deleteFromCart(o.cartId, o.userName)
+                    break
+                }
+            }
+            viewModel.addToCart(foodName, foodImage, foodPrice, sum.toString(), userName)
             Toast.makeText(requireContext(),"$foodName sepete eklendi",Toast.LENGTH_SHORT).show()
-        }else Toast.makeText(requireContext(),"Sipariş adeti 0 olamaz.",Toast.LENGTH_SHORT).show()
+        }else Toast.makeText(requireContext(),R.string.empty_amount,Toast.LENGTH_SHORT).show()
 
     }
 }

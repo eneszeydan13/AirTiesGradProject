@@ -30,7 +30,6 @@ class ConfirmOrderFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_confirm_order, container, false)
         binding.confirmOrderFragment = this
         binding.orderConfirmedAnimation.visibility = View.GONE
@@ -69,6 +68,9 @@ class ConfirmOrderFragment : Fragment() {
                 val order = Order(uid, binding.amount, address, telNo, dateTime)
                 viewModel.saveOrderToFirebase(order)
                 viewModel.getCart(uid)
+                /**
+                 * After user confirms the order, we delete everything in the cart
+                 */
                 viewModel.orderList.observe(viewLifecycleOwner){
                     it.forEach { item ->
                         viewModel.deleteFromCart(item.cartId, item.userName)
