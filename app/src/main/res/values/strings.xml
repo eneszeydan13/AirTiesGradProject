@@ -12,4 +12,5 @@
     <string name="address">Adres: %s</string>
     <string name="price">Tutar: %s ₺</string>
     <string name="black_basket_image">black_basket_image</string>
+    <string name="log_out">ÇIKIŞ YAP</string>
 </resources>

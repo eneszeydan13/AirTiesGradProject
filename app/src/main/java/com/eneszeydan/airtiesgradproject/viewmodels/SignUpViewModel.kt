@@ -1,4 +1,9 @@
 package com.eneszeydan.airtiesgradproject.viewmodels
 
-class SignUpViewModel {
+import androidx.lifecycle.ViewModel
+
+class SignUpViewModel: ViewModel() {
+
+
+
 }
