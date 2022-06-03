@@ -17,6 +17,7 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+        supportActionBar?.title = "Food Delivery"
         setContentView(binding.root)
         auth = Firebase.auth
 

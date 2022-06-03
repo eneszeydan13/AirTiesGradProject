@@ -20,6 +20,7 @@ class LogInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_log_in)
         setContentView(binding.root)
+        supportActionBar?.title = "Food Delivery"
         auth = Firebase.auth
         binding.apply {
             buttonLogin.setOnClickListener {
